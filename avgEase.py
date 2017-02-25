@@ -42,9 +42,9 @@ def find_average_ease_in_deck(deck_id):
 
 # Average mature card ease factor in settings group
 def mature_ease_in_settings_group(dogID):
+    tot_mature_cards = 0
+    weighted_ease = 0
     avg_mature_ease = 0
-    mature_cards = 0
-    mature_ease = 0
     cur_ease = 0
     group_id = dogID
     if group_id:
@@ -52,8 +52,10 @@ def mature_ease_in_settings_group(dogID):
         decks = find_decks_in_settings_group(group_id)
         for d in decks:
             mature_cards, mature_ease = find_average_ease_in_deck(d)
-        if mature_cards > 0 and mature_ease:
-            avg_mature_ease = int(mature_ease)
+            tot_mature_cards += mature_cards
+            weighted_ease += mature_cards * mature_ease
+        if tot_mature_cards > 0 and weighted_ease:
+            avg_mature_ease = int(weighted_ease / tot_mature_cards)
         else:
             # not enough data; don't change the init ease factor
             avg_mature_ease = mw.col.decks.dconf[group_id]["new"]["initialFactor"]
@@ -71,7 +73,6 @@ def update_initial_ease_factor(dogID, ease_factor):
             #mw.col.decks.flush()
 # main function
 def update_ease_factor(dogID):
-    #dogID = deck options group ID
     avg_ease, cur_ease = mature_ease_in_settings_group(dogID)
     #utils.showInfo("dogID: %s AvgEase: %s" % (dogID, avg_ease))
     update_initial_ease_factor(dogID, avg_ease)
