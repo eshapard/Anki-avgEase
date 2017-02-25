@@ -4,4 +4,4 @@ Anki 2 Add-On that iterates through each deck options group in your collection a
 
 Settings are calibrated each time a profile is loaded (at startup).
 
-See: [Anki's Starting Ease Factor Settings](https://eshapard.github.io/anki/ankis-initial-ease-factor-setting.html) for the rationale behind this.
+See Post: [Anki's Starting Ease Factor Settings](https://eshapard.github.io/anki/ankis-initial-ease-factor-setting.html) for the rationale behind this.
