@@ -1,6 +1,6 @@
 # Average Ease
 # Anki 2 addon
-# Author EJS 
+# Author EJS
 # https://eshapard.github.io/
 #
 # Sets the initial ease factor of a deck options group to the average
@@ -83,7 +83,7 @@ def update_ease_factors():
     dconf = mw.col.decks.dconf
     #create progress bar
     #ogs = len(dconf)
-    #mw.progress.start(max = ogs, label = "Init Ease Factor: %s" % ogs) 
+    #mw.progress.start(max = ogs, label = "Init Ease Factor: %s" % ogs)
     #cycle through them one by one
     #i = 1
     for k in dconf:
